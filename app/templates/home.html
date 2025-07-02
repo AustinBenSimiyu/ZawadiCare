@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main-content">
+    <h1>Welcome to Pregnancy Journey Tracker</h1>
+    <p class="subtitle">Track your pregnancy journey with ease and confidence.</p>
+    
+    {% if not current_user.is_authenticated %}
+    <div class="cta-buttons">
+        <a href="{{ url_for('auth.register') }}" class="btn">Get Started</a>
+        <a href="{{ url_for('auth.login') }}" class="btn secondary sign-in-btn">Sign In</a>
+    </div>
+    {% endif %}
+
+    <div class="features">
+        <div class="feature">
+            <h2>Week by Week Tracking</h2>
+            <p>Follow your baby's development with detailed weekly updates. Get insights about your baby's growth and what to expect at each stage.</p>
+        </div>
+
+        <div class="feature">
+            <h2>Health Monitoring</h2>
+            <p>Track symptoms, appointments, and important health metrics. Stay on top of your health with easy-to-use tracking tools.</p>
+        </div>
+
+        <div class="feature">
+            <h2>Photo Journal</h2>
+            <p>Document your journey with a beautiful photo timeline. Create lasting memories of your pregnancy journey.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

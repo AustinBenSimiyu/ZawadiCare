@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="tracking-container">
+    <h1>Track Movement</h1>
+    <form method="post" class="tracking-form">
+        {{ form.hidden_tag() }}
+        
+        <div class="form-group">
+            {{ form.date.label }}
+            {{ form.date(class="form-control", type="datetime-local") }}
+            {% for error in form.date.errors %}
+                <span class="error-message">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.duration.label }}
+            {{ form.duration(class="form-control", min="0", type="number") }}
+            {% for error in form.duration.errors %}
+                <span class="error-message">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.kick_count.label }}
+            {{ form.kick_count(class="form-control", min="0", type="number") }}
+            {% for error in form.kick_count.errors %}
+                <span class="error-message">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.notes.label }}
+            {{ form.notes(class="form-control") }}
+            {% for error in form.notes.errors %}
+                <span class="error-message">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-actions">
+            <a href="{{ url_for('main.dashboard') }}" class="btn secondary">Back</a>
+            {{ form.submit(class="btn primary") }}
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Set default date and time to now
+    const dateInput = document.querySelector('input[type="datetime-local"]');
+    if (dateInput) {
+        const now = new Date();
+        now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+        dateInput.value = now.toISOString().slice(0, 16);
+    }
+});
+</script>
+{% endblock %}

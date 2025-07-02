@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="tracking-container">
+    <h1>Add Appointment</h1>
+    <form method="post" class="tracking-form">
+        {{ form.hidden_tag() }}
+        
+        <div class="form-group">
+            {{ form.date.label }}
+            {{ form.date(class="form-control", type="datetime-local") }}
+            {% for error in form.date.errors %}
+                <span class="error-message">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.title.label }}
+            {{ form.title(class="form-control") }}
+            {% for error in form.title.errors %}
+                <span class="error-message">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.doctor.label }}
+            {{ form.doctor(class="form-control") }}
+            {% for error in form.doctor.errors %}
+                <span class="error-message">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.location.label }}
+            {{ form.location(class="form-control") }}
+            {% for error in form.location.errors %}
+                <span class="error-message">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.notes.label }}
+            {{ form.notes(class="form-control") }}
+            {% for error in form.notes.errors %}
+                <span class="error-message">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-actions">
+            <a href="{{ url_for('main.dashboard') }}" class="btn secondary">Back</a>
+            {{ form.submit(class="btn") }}
+        </div>
+    </form>
+</div>
+{% endblock %}
