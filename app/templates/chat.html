@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gemini Popup Demo</title>
+  <style>
+    :root {
+      --popup-width: 320px;
+      --popup-height: 420px;
+      --accent: #FF69B4;
+      --radius: 1rem;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* floating button */
+    #gemini-open {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      padding: 0.75rem 1.2rem;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: background 0.2s;
+      z-index: 999;
+    }
+    #gemini-open:hover {
+      background: #FF69B4;
+    }
+
+    /* popup container */
+    #gemini-popup {
+      position: fixed;
+      bottom: 80px;
+      right: 30px;
+      width: var(--popup-width);
+      height: var(--popup-height);
+      background: #ffffff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 1000;
+      font-family: system-ui, sans-serif;
+    }
+
+    /* header */
+    #gemini-header {
+      background: var(--accent);
+      color: #fff;
+      padding: 0.75rem 1rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    #gemini-header button {
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1.25rem;
+      cursor: pointer;
+    }
+
+    /* chat body */
+    #gemini-body {
+      flex: 1 1 auto;
+      padding: 1rem;
+      overflow-y: auto;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    #gemini-output {
+      white-space: pre-wrap;
+    }
+
+    /* input area */
+    #gemini-input-area {
+      border-top: 1px solid #e5e7eb;
+      padding: 0.75rem 1rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+    #gemini-input {
+      flex: 1 1 auto;
+      resize: none;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid #d1d5db;
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 0.9rem;
+      line-height: 1.3;
+    }
+    #gemini-send {
+      background: var(--accent);
+      border: none;
+      color: #fff;
+      padding: 0.5rem 0.9rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    #gemini-send:hover {
+      background: #1e4ed8;
+    }
+  </style>
+</head>
+<body>
+  <!-- floating open button -->
+  <button id="gemini-open">Chat with Zawadi</button>
+
+  <!-- popup window -->
+  <div id="gemini-popup">
+    <div id="gemini-header">
+      <span>Zawadi Assistant</span>
+      <button id="gemini-close" title="Close">&times;</button>
+    </div>
+
+    <div id="gemini-body">
+      <div id="gemini-output">Ask me anything!</div>
+    </div>
+
+    <div id="gemini-input-area">
+      <textarea id="gemini-input" rows="2" placeholder="Type your prompt..."></textarea>
+      <button id="gemini-send" title="Send">&#10148;</button>
+    </div>
+  </div>
+
+  <script>
+    // Elements
+    const popup = document.getElementById("gemini-popup");
+    const btnOpen = document.getElementById("gemini-open");
+    const btnClose = document.getElementById("gemini-close");
+    const btnSend = document.getElementById("gemini-send");
+    const input = document.getElementById("gemini-input");
+    const output = document.getElementById("gemini-output");
+
+    // Show/Hide popup
+    btnOpen.addEventListener("click", () => (popup.style.display = "flex"));
+    btnClose.addEventListener("click", () => (popup.style.display = "none"));
+
+    // Handle Enter key inside textarea (send on Ctrl+Enter or Cmd+Enter)
+    input.addEventListener("keydown", (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+        e.preventDefault();
+        sendPrompt();
+      }
+    });
+    btnSend.addEventListener("click", sendPrompt);
+
+    async function sendPrompt() {
+      const prompt = input.value.trim();
+      if (!prompt) return;
+      input.value = "";
+      output.textContent = "Thinking...";
+      try {
+        // ✨ 1.  UPDATE with your own Gemini API key
+        const API_KEY = "AIzaSyAWP3uK8SU6rcX8HYxhb0uoyMbSiydviAY"; // <-- Replace safely (or load via env on server)
+
+        // ✨ 2.  Choose the model endpoint you want
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+
+        const body = {
+          contents: [
+            {
+              role: "user",
+              parts: [{ text: prompt }],
+            },
+          ],
+        };
+
+        const res = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        });
+
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+
+        const reply =
+          data?.candidates?.[0]?.content?.parts?.[0]?.text ||
+          data?.candidates?.[0]?.content?.parts?.[0]?.text ||
+          "No response";
+        output.textContent = reply;
+      } catch (err) {
+        console.error(err);
+        output.textContent = "⚠️ Error: " + err.message;
+      }
+    }
+  </script>
+</body>
+</html>
