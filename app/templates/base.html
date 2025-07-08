@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Pregnancy Journey Tracker{% endblock %}</title>
+    <title>{% block title %}Zawadi Care{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="{{ url_for('main.home') }}" class="brand">Linda Mama 🤰</a>
+            <a href="{{ url_for('main.home') }}" class="brand">
+                <span style="color: #FF0000;">Zawadi</span> <span style="color: #3498db;">Care</span>👨‍⚕️
+            </a></a>
             <div class="nav-links">
                 {% if current_user.is_authenticated %}
                     <a href="{{ url_for('main.dashboard') }}">Dashboard</a>
@@ -35,7 +37,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 Pregnancy Journey Tracker</p>
+        <p>&copy; 2025 Zawadi Care</p>
     </footer>
 </body>
 </html>

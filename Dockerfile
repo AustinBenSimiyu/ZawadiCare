@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements first to leverage Docker cache
+# Copy requirements first
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install gunicorn
@@ -25,21 +25,11 @@ ENV FLASK_APP=run.py
 ENV PYTHONUNBUFFERED=1
 ENV PORT=8000
 
+# Initialize the database
+RUN python3 init_db.py
+
 # Expose port
 EXPOSE 8000
 
-# Create a startup script
-RUN echo '#!/bin/bash\n\
-python3 -c "\
-from app import create_app, db;\
-app = create_app();\
-with app.app_context():\
-    db.drop_all();\
-    db.create_all()\
-"\n\
-gunicorn run:app --bind 0.0.0.0:$PORT' > /app/start.sh
-
-RUN chmod +x /app/start.sh
-
 # Run the application
-CMD ["/app/start.sh"] 
+CMD ["gunicorn", "run:app", "--bind", "0.0.0.0:8000"]
