@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="admin-container">
+    <h1>Update Due Date for {{ user.username }}</h1>
+    <form method="post" class="admin-form">
+        <div class="form-group">
+            <label for="due_date">New Due Date</label>
+            <input type="date" id="due_date" name="due_date" 
+                   class="form-control" 
+                   value="{{ user.due_date.strftime('%Y-%m-%d') }}" 
+                   required>
+        </div>
+        <div class="form-actions">
+            <a href="{{ url_for('admin.admin_dashboard') }}" class="btn btn-secondary">Cancel</a>
+            <button type="submit" class="btn btn-primary">Update Due Date</button>
+        </div>
+    </form>
+</div>
+{% endblock %} 

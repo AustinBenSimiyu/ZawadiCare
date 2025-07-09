@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZawadiCare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../static/css/styles2.css">
+</head>
+<body class="bg-gradient-to-b from-pink-50 via-blue-50 to-white text-gray-800">
+  <a href="#home" class="sr-only focus:not-sr-only absolute left-2 top-2 bg-pink-100 text-pink-700 px-4 py-2 rounded z-50">Skip to main content</a>
+  <!-- Navigation Bar -->
+  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur shadow-sm" role="navigation" aria-label="Main Navigation">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+      <div class="text-2xl font-bold text-pink-600 tracking-wide">Zawadi <span class="text-blue-500">Care 👩‍⚕️</span></div>
+      <ul class="hidden md:flex space-x-8 text-base font-medium">
+        <li><a href="#home" class="hover:text-pink-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400">Home</a></li>
+        <li><a href="#about" class="hover:text-pink-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400">About</a></li>
+        <li><a href="#features" class="hover:text-pink-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400">Features</a></li>
+        <li><a href="#support" class="hover:text-pink-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400">Support</a></li>
+        <li><a href="{{ url_for('main.base') }}" class="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400">Launch App</a></li>
+      </ul>
+      <button class="md:hidden flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400" id="menu-btn" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+        <svg class="w-7 h-7 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div class="md:hidden hidden px-4 pb-4" id="mobile-menu" role="menu">
+      <ul class="space-y-2 text-base font-medium">
+        <li><a href="#home" class="block hover:text-pink-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400">Home</a></li>
+        <li><a href="#about" class="block hover:text-pink-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400">About</a></li>
+        <li><a href="#features" class="block hover:text-pink-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400">Features</a></li>
+        <li><a href="#support" class="block hover:text-pink-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400">Support</a></li>
+        <li><a href="#launch" class="block bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400">Launch App</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="relative min-h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1560707854-fb9a10eeaace?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+    <div class="absolute inset-0 bg-white/70 backdrop-blur-sm"></div>
+    <div class="relative z-10 text-center max-w-2xl mx-auto py-24">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-pink-700 mb-6">Your Journey to Motherhood, Informed and <span class="text-pink-500">Empowered</span></h1>
+      <a href="{{ url_for('main.base') }}" class="inline-block bg-pink-500 text-white text-base sm:text-lg px-6 sm:px-8 py-3 rounded-full shadow-lg hover:bg-pink-600 transition font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400">Go to Web App</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-16 bg-white">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10 px-4">
+      <div class="flex-1">
+        <h2 class="text-3xl font-bold text-pink-600 mb-4">About Zawadi Care</h2>
+        <p class="text-lg mb-4">Zawadi Care is dedicated to supporting expectant mothers in Kenya and Sub-Saharan Africa. Our mission is to provide a safe, educational, and empowering space for every pregnancy journey. With trusted information, tools, and access to healthcare professionals, we help you make informed decisions for you and your baby.</p>
+        <p class="text-pink-500 font-semibold">Safety. Education. Empowerment.</p>
+      </div>
+      <div class="flex-1 flex justify-center">
+        <!-- Image Slider Start -->
+        <div id="about-slider" class="relative w-full max-w-md h-64 md:h-80">
+          <div class="overflow-hidden rounded-2xl shadow-lg w-full h-full aspect-[4/3]">
+            <img src="https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&w=500&q=80" alt="Smiling expectant woman, hand on belly, looking hopeful" class="slider-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-50" />
+            <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=500&q=80" alt="Pregnant woman with partner holding belly" class="slider-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-100" />
+            <img src="https://images.pexels.com/photos/1648376/pexels-photo-1648376.jpeg?auto=compress&w=500&q=80" alt="Mother listening to baby's heartbeat" class="slider-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-100" />
+            <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=500&q=80" alt="Pregnant woman in soft light, smiling" class="slider-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0" />
+          </div>
+          <!-- Slider Controls -->
+          <button id="slider-prev" aria-label="Previous image" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-pink-100 text-pink-600 rounded-full p-2 shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400 z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+          </button>
+          <button id="slider-next" aria-label="Next image" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-pink-100 text-pink-600 rounded-full p-2 shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400 z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+          </button>
+          <!-- Slider Indicators -->
+          <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
+            <button class="slider-dot w-3 h-3 rounded-full bg-pink-400 border-2 border-white focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400" aria-label="Go to image 1"></button>
+            <button class="slider-dot w-3 h-3 rounded-full bg-pink-200 border-2 border-white focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400" aria-label="Go to image 2"></button>
+            <button class="slider-dot w-3 h-3 rounded-full bg-pink-200 border-2 border-white focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400" aria-label="Go to image 3"></button>
+            <button class="slider-dot w-3 h-3 rounded-full bg-pink-200 border-2 border-white focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400" aria-label="Go to image 4"></button>
+          </div>
+        </div>
+        <!-- Image Slider End -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-16 bg-blue-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-blue-600 mb-10">Features</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Feature Card 1 -->
+        <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center">
+          <img src="https://img.icons8.com/?size=100&id=I9LtanbJpCSJ&format=png&color=000000" alt="Notebook icon for symptom logging" class="w-16 h-16 mb-4">
+          <h3 class="text-xl font-semibold mb-2">Symptom Logging</h3>
+          <p class="text-center">Easily track and log your daily symptoms for better health monitoring.</p>
+        </div>
+        <!-- Feature Card 2 -->
+        <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center">
+          <img src="https://img.icons8.com/fluency/96/000000/calendar--v2.png" alt="Calendar icon for weekly insights" class="w-16 h-16 mb-4">
+          <h3 class="text-xl font-semibold mb-2">Weekly Pregnancy Insights</h3>
+          <p class="text-center">Receive personalized updates and tips for every week of your pregnancy.</p>
+        </div>
+        <!-- Feature Card 3 -->
+        <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center">
+          <img src="https://img.icons8.com/fluency/96/000000/appointment-reminders.png" alt="Appointment reminder icon" class="w-16 h-16 mb-4">
+          <h3 class="text-xl font-semibold mb-2">Appointment Scheduling</h3>
+          <p class="text-center">Schedule and manage your prenatal appointments with ease.</p>
+        </div>
+        <!-- Feature Card 4 -->
+        <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center">
+          <img src="https://img.icons8.com/?size=100&id=1dwl4AbbCiMQ&format=png&color=000000" alt="Doctor icon for feedback integration" class="w-16 h-16 mb-4">
+          <h3 class="text-xl font-semibold mb-2">Doctor Feedback Integration</h3>
+          <p class="text-center">Connect with certified doctors for feedback and guidance.</p>
+        </div>
+        <!-- Feature Card 5 -->
+        <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center">
+          <img src="https://img.icons8.com/fluency/96/000000/combo-chart.png" alt="Combo chart icon for progress tracking" class="w-16 h-16 mb-4">
+          <h3 class="text-xl font-semibold mb-2">Visual Progress Tracking</h3>
+          <p class="text-center">See your pregnancy progress visually with easy-to-understand charts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Support & Community Section -->
+  <section id="support" class="py-16 bg-white">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-pink-600 mb-6">Support & Community</h2>
+      <p class="text-lg mb-6">Access certified doctors, partner clinics, and a supportive community throughout your pregnancy. Zawadi Care partners with local health organizations to ensure you receive the best care and advice.</p>
+      <div class="flex flex-wrap gap-6 items-center mb-8">
+        <img src="https://img.icons8.com/color/48/000000/hospital-3.png" alt="Hospital icon for partner clinic" class="w-12 h-12">
+        <span class="text-gray-600 font-medium">Kenya Health Partners</span>
+        <img src="https://img.icons8.com/color/48/000000/doctor-female.png" alt="Doctor icon for certified doctors" class="w-12 h-12">
+        <span class="text-gray-600 font-medium">Certified Doctors</span>
+      </div>
+      <!-- Testimonials Placeholder -->
+      <div class="bg-pink-50 rounded-xl p-6 shadow text-center">
+        <p class="italic text-pink-700">"Zawadi Care made my pregnancy journey so much easier and less stressful!"</p>
+        <span class="block mt-2 text-gray-500">- Testimonial Placeholder</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section id="launch" class="py-16 bg-gradient-to-r from-pink-100 via-blue-100 to-white text-center">
+    <h2 class="text-3xl font-bold mb-4 text-blue-600">Ready to begin your pregnancy journey?</h2>
+    <a href="{{ url_for('main.base') }}" class="inline-block bg-pink-500 text-white text-lg px-10 py-4 rounded-full shadow-lg hover:bg-pink-600 transition font-semibold">Launch Web App</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t py-6 mt-8 text-center text-sm text-gray-500">
+    <div>Contact: <a href="mailto:zawadicare@gmail.com" class="text-pink-500 hover:underline">zawadicare@gmail.com</a></div>
+    <div class="mt-2">&copy; 2025 Zawadi Care. All rights reserved.</div>
+    <div class="mt-2">
+      <a href="#" class="hover:underline">Privacy Policy</a> | <a href="#" class="hover:underline">Terms of Service</a>
+    </div>
+    <div class="mt-2 text-xs text-gray-400">This site is for informational purposes only and does not replace professional medical advice.</div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+  <script src="../static/js/main.js"></script>
+</body>
+</html> 
