@@ -8,7 +8,11 @@ bp = Blueprint('main', __name__)
 @bp.route('/')
 @bp.route('/home')
 def home():
-    return render_template('home.html')
+    return render_template('index.html')
+
+@bp.route('/base')
+def base():
+    return render_template('base.html')
 
 @bp.route('/dashboard')
 @login_required
