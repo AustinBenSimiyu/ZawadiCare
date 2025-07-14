@@ -17,7 +17,7 @@
         <div class="dashboard-card">
             <h2>Baby's Development</h2>
             <div class="progress-info">
-                <p class="baby-size">Your baby is now the size of a lemon</p>
+                <p class="baby-size">Your baby is now the size of a <strong>{{ baby_size }}</strong>.</p>
                 <div class="progress-container">
                     <div class="progress-bar">
                         <div class="progress" style="width: {{ (40 - weeks) * 2.5 if weeks <= 40 else 100 }}%"></div>

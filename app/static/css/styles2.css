@@ -26,3 +26,14 @@ body { font-family: 'Inter', sans-serif; }
   color: #be185d;
   z-index: 1000;
 } 
+
+.nav-links-2 {
+  background-color: #f472b6; /* Tailwind's pink-400 */
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}

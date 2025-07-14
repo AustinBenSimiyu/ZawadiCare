@@ -19,9 +19,9 @@
         <li><a href="#about" class="hover:text-pink-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400">About</a></li>
         <li><a href="#features" class="hover:text-pink-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400">Features</a></li>
         <li><a href="#support" class="hover:text-pink-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400">Support</a></li>
-        <li><a href="{{ url_for('main.base') }}" class="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400">Launch App</a></li>
-      </ul>
-      <button class="md:hidden flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400" id="menu-btn" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
+        <li><a href="{{ url_for('auth.login') }}" class="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400">Login</a></li>
+      <li><a href="{{ url_for('auth.register') }}" class="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400">Register</a></li>
+      </ul><button class="md:hidden flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400" id="menu-btn" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
         <svg class="w-7 h-7 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
       </button>
     </div>
@@ -58,9 +58,9 @@
         <!-- Image Slider Start -->
         <div id="about-slider" class="relative w-full max-w-md h-64 md:h-80">
           <div class="overflow-hidden rounded-2xl shadow-lg w-full h-full aspect-[4/3]">
-            <img src="https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&w=500&q=80" alt="Smiling expectant woman, hand on belly, looking hopeful" class="slider-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-50" />
-            <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=500&q=80" alt="Pregnant woman with partner holding belly" class="slider-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-100" />
-            <img src="https://images.pexels.com/photos/1648376/pexels-photo-1648376.jpeg?auto=compress&w=500&q=80" alt="Mother listening to baby's heartbeat" class="slider-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-100" />
+            <img src="https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&w=500&q=80" alt="Smiling expectant woman, hand on belly, looking hopeful" class="slider-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0/>
+            <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=500&q=80" alt="Pregnant woman with partner holding belly" class="slider-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0" />
+            <img src="https://images.pexels.com/photos/1648376/pexels-photo-1648376.jpeg?auto=compress&w=500&q=80" alt="Mother listening to baby's heartbeat" class="slider-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0" />
             <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=500&q=80" alt="Pregnant woman in soft light, smiling" class="slider-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0" />
           </div>
           <!-- Slider Controls -->

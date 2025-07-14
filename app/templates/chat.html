@@ -155,47 +155,51 @@
     btnSend.addEventListener("click", sendPrompt);
 
     async function sendPrompt() {
-      const prompt = input.value.trim();
-      if (!prompt) return;
-      input.value = "";
-      output.textContent = "Thinking...";
-      try {
-        // ✨ 1.  UPDATE with your own Gemini API key
-        const API_KEY = "AIzaSyAWP3uK8SU6rcX8HYxhb0uoyMbSiydviAY"; // <-- Replace safely (or load via env on server)
+  const prompt = input.value.trim();
+  if (!prompt) return;
+  input.value = "";
+  output.textContent = "Thinking...";
 
-        // ✨ 2.  Choose the model endpoint you want
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+  try {
+    // Step 1: Get the API key from your Flask backend
+    const configRes = await fetch("/api/config");
+    if (!configRes.ok) throw new Error("Failed to load API key");
+    const configData = await configRes.json();
+    const API_KEY = configData.api_key;
 
-        const body = {
-          contents: [
-            {
-              role: "user",
-              parts: [{ text: prompt }],
-            },
-          ],
-        };
+    if (!API_KEY) throw new Error("API key missing");
 
-        const res = await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(body),
-        });
+    // Step 2: Build Gemini API request
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
+    const body = {
+      contents: [
+        {
+          role: "user",
+          parts: [{ text: prompt }],
+        },
+      ],
+    };
 
-        const reply =
-          data?.candidates?.[0]?.content?.parts?.[0]?.text ||
-          data?.candidates?.[0]?.content?.parts?.[0]?.text ||
-          "No response";
-        output.textContent = reply;
-      } catch (err) {
-        console.error(err);
-        output.textContent = "⚠️ Error: " + err.message;
-      }
-    }
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+
+    const reply =
+      data?.candidates?.[0]?.content?.parts?.[0]?.text || "No response";
+    output.textContent = reply;
+  } catch (err) {
+    console.error(err);
+    output.textContent = "⚠️ Error: " + err.message;
+  }
+}
   </script>
 </body>
 </html>
