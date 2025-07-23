@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template
 from flask_login import login_required, current_user
 from datetime import datetime
+from app.forms import RegistrationForm, LoginForm
 from app.models.tracking import Weight, Movement, Appointment, Photo
 
 bp = Blueprint('main', __name__)
@@ -8,11 +9,15 @@ bp = Blueprint('main', __name__)
 @bp.route('/')
 @bp.route('/home')
 def home():
-    return render_template('index.html')
+    register_form = RegistrationForm()
+    login_form = LoginForm()
+    return render_template('base2.html', register_form=register_form, login_form=login_form)
 
 @bp.route('/base')
 def base():
-    return render_template('base.html')
+    register_form = RegistrationForm()
+    login_form = LoginForm()
+    return render_template('base2.html', register_form=register_form, login_form=login_form)
 
 @bp.route('/dashboard')
 @login_required

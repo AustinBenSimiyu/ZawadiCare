@@ -1,8 +1,8 @@
-# Linda Mama Pregnancy Journey Tracker
-#### Video Demo: <URL HERE>
+# Zawadi Care Pregnancy Journey Tracker
+
 #### Description:
 
-The Linda Mama Pregnancy Journey Tracker is a comprehensive web application designed to help expecting parents monitor and document their pregnancy journey. This Flask-based application provides an intuitive interface for tracking various aspects of pregnancy, from health metrics to photo documentation.
+The Zawadi Care Pregnancy Journey Tracker is a comprehensive web application designed to help expecting parents monitor and document their pregnancy journey. This Flask-based application provides an intuitive interface for tracking various aspects of pregnancy, from health metrics to photo documentation.
 
 ### Project Purpose
 
@@ -54,7 +54,7 @@ The project is built using the following technologies:
 ### File Structure and Functionality
 
 
-LindaMama/
+ZawadiCare/
 ├── app/
 │   ├── init.py          # Application factory and extensions
 │   ├── routes/
@@ -136,7 +136,7 @@ LindaMama/
 6. Run the application: `python run.py`
 
 ### Author
-[Austin Ben Simiyu]
+Austin Ben Simiyu
 
 ### Acknowledgments
 - CS50 staff for the excellent course content
